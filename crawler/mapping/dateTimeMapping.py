@@ -1,4 +1,4 @@
-monthNumberToMonthFullName = {
+monthNumberToMonthFull = {
     '01':'January',
     '02':'February',
     '03':'March',
@@ -27,3 +27,20 @@ monthShortToMonthNumber = {
     'Nov': '11',
     'Dec': '12',
 }
+
+monthShortToMonthFull = {
+    'Jan': 'January',
+    'Feb': 'February',
+    'Mar': 'March',
+    'Apr': 'April',
+    'May': 'May',
+    'Jun': 'June',
+    'Jul': 'July',
+    'Aug': 'August',
+    'Sep': 'September',
+    'Oct': 'October',
+    'Nov': 'November',
+    'Dec': 'December'
+}
+
+monthFullToMonthShort = dict(map(reversed, monthShortToMonthFull.items()))
