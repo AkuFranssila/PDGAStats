@@ -1,0 +1,16 @@
+eventTierMapping = {
+    "M": "Major",
+    "NT": "National Tour",
+    "A": "A-tier",
+    "B": "B-tier",
+    "C": "C-tier",
+    "XM": "Experimental Major",
+    "XA": "Experimental A-tier",
+    "XB": "Experimental B-tier",
+    "XC": "Experimental C-tier",
+    "L": "League",
+    "H": "Historical event",
+    "S": "Series",
+    "A/B": "Mix of A/B tier",
+    "B/C": "Mix of B/C tier",
+}
