@@ -6,23 +6,23 @@
 
 Crawl single player stats
 
-`python -m player.playerRawDataCrawler --pdgaNumber 44708`
+`python3 -m player.playerRawDataCrawler --pdgaNumber 44708`
 
 Crawl latest PDGA Number on player
 
-`python -m player.playerLatestIdCrawler`
+`python3 -m player.playerLatestIdCrawler`
 
 Run larger batch of PDGA numbers
 
-`python -m runners.runPlayerRawData --type test --startId 1 --endId 5`
+`python3 -m runners.runPlayerRawData --type test --startId 1 --endId 5`
 
 Crawl tournament with specific ID
 
-`python -m tournament.tournamentRawDataCrawler --tournamentId 52082`
+`python3 -m tournament.tournamentRawDataCrawler --tournamentId 52082`
 
 Run all unit tests
 
-`python -m unittest discover`
+`python3 -m unittest discover -v`
 
 *** TODO ***
 

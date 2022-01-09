@@ -45,7 +45,7 @@ def runPlayerRawData(type: str, startId: int, endId: int) -> None:
     if (type == "all"):
         startId = 1
         endId = playerLatestIdCrawler()
-        crawlCount = findSubFolderCount()
+        crawlCount = findSubFolderCount("playerRawData")
     else:
         crawlCount = "test"
 

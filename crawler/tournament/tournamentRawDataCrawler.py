@@ -4,6 +4,7 @@ from utils.s3Utils.uploadUtils import uploadObjectS3
 import logging
 import requests
 import argparse
+import json
 
 logging.getLogger().setLevel("INFO")
 

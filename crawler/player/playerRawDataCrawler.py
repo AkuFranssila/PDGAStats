@@ -36,6 +36,7 @@ def playerRawDataCrawler(pdgaNumber: int) -> PlayerRawData:
     statusCode = response.status_code
 
     playerRawData = PlayerRawData(pdgaNumber, data, statusCode)
+    playerRawData.createJson()
 
     return playerRawData
     

@@ -1,6 +1,5 @@
-python-decouple
 Requests
 boto3
 bs4
 python-dotenv
-responses
+requests-mock

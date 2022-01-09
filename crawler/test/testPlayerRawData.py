@@ -9,8 +9,6 @@ class TestPlayerRawData(unittest.TestCase):
 
     def testShouldInitWithCorrectPdgaNumber(self):
         data = openJsonFile("test/data/testPlayerRawData44708.json")
-        randomPdgaNumber = 
-
 
         playerRawData = PlayerRawData(
             44708,
@@ -28,7 +26,17 @@ class TestPlayerRawData(unittest.TestCase):
             200
         )
 
-        self.assertEqual(playerRawData.pdgaNumber, 44708)
+        self.assertEqual(playerRawData.statusCode, 200)
+
+    def testShouldInitWithCorrectRawData(self):
+        data = openJsonFile("test/data/testPlayerRawData44708.json")
+        playerRawData = PlayerRawData(
+            44708,
+            data.get("data", ""),
+            200
+        )
+
+        self.assertEqual(playerRawData.rawData, data.get("data", ""))
 
 
 if __name__ == '__main__':
