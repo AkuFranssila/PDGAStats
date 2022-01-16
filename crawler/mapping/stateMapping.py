@@ -1,4 +1,4 @@
-statesFullUS = {
+US_STATES_DICT = {
     'Alabama': 'AL',
     'Alaska': 'AK',
     'American Samoa': 'AS',
@@ -58,4 +58,4 @@ statesFullUS = {
     'Wyoming': 'WY'
 }
 
-statesShortUS = dict(map(reversed, statesFullUS.items()))
+US_STATES_DICT_REVERSED = dict(map(reversed, US_STATES_DICT.items()))

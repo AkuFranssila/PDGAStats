@@ -1,4 +1,4 @@
-randomCityNames = [
+RANDOM_CITY_NAMES = [
     "Tamminiemi",
     "Musa",
     "Koskonkylä",

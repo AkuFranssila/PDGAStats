@@ -1,11 +1,11 @@
 import datetime
 from typing import Literal
-from utils.generalUtils.errorUtils import raiseError
+from utils.generalUtils.errorUtils import raise_error
 
 crawlOptionTypes: str = Literal['all', 'latest', 'test']
 
-def TournamentDate(dateOption: str) -> str:
-    tournamentCrawlDates = {
+def tournament_date(date_option: str) -> str:
+    tournament_crawL_dates = {
         "all": {
             "startDate": "1979-01-01",
             "endDate": str(datetime.datetime.today().year) + '-12-31'
@@ -20,13 +20,13 @@ def TournamentDate(dateOption: str) -> str:
         }
     }
 
-    dateOptions = tournamentCrawlDates.get(dateOption)
+    date_options = tournament_crawL_dates.get(date_option)
 
-    if dateOptions:
-        startDate = dateOptions.get("startDate")
-        endDate = dateOptions.get("endDate")
-        url = f'https://www.pdga.com/tour/search?date_filter[min][date]={startDate}&date_filter[max][date]={endDate}'
+    if date_options:
+        start_date = date_options.get("startDate")
+        end_date = date_options.get("endDate")
+        url = f'https://www.pdga.com/tour/search?date_filter[min][date]={start_date}&date_filter[max][date]={end_date}'
     else:
-        raiseError("INCORRECT_TOURNAMENT_DATE")
+        raise_error("INCORRECT_TOURNAMENT_DATE")
 
     return url

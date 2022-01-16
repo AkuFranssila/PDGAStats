@@ -1,4 +1,4 @@
-eventTierMapping = {
+EVENT_TIER_MAPPING = {
     "M": "Major",
     "NT": "National Tour",
     "A": "A-tier",

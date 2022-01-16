@@ -1,4 +1,4 @@
-def defaultTo(value: any, returnValue: any) -> any:
+def default_to(value: any, return_value: any) -> any:
     """
     Checks if value exists and if it does returns it unchanged.
     If value does not exists returns a default value.
@@ -9,4 +9,4 @@ def defaultTo(value: any, returnValue: any) -> any:
     if value:
         return value
     else:
-        return returnValue
+        return return_value

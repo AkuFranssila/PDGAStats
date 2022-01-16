@@ -1,12 +1,12 @@
-from utils.generalUtils.errorUtils import raiseError
+from utils.generalUtils.errorUtils import raise_error
 
-def validatePlayerId(playerId: str) -> int:
-        if playerId.isdigit():
-            playerId = int(playerId)
-            if playerId < 150_000:
-                raiseError("PLAYER_ID_TOO_LOW")
+def validate_player_id(player_id: str) -> int:
+        if player_id.isdigit():
+            player_id = int(player_id)
+            if player_id < 150_000:
+                raise_error("PLAYER_ID_TOO_LOW")
         else:
-            raiseError("PLAYER_ID_NOT_INT")
+            raise_error("PLAYER_ID_NOT_INT")
 
-        return playerId
+        return player_id
         

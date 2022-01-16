@@ -1,12 +1,12 @@
 import unittest
-from runners.runPlayerRawData import runPlayerRawData, handleArguments
+from runners.runPlayerRawData import run_player_raw_data, handle_arguments
 from utils.testUtils.requestsTestUtils import mock_requests_get
 
 class TestPlayerRawDataRunner(unittest.TestCase):
 
     def test_should_fail_if_no_arguments(self):
         with self.assertRaises(TypeError):
-            handleArguments([])
+            handle_arguments([])
     
 
 

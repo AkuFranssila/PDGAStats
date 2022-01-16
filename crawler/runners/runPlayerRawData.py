@@ -1,20 +1,20 @@
 from typing import Tuple
 
-from player.playerRawData import PlayerRawData
-from player.playerLatestIdCrawler import playerLatestIdCrawler
-from player.playerRawDataCrawler import playerRawDataCrawler
+from player.playerLatestIdCrawler import player_latest_id_crawler
+from player.playerRawDataCrawler import player_raw_data_crawler
 
-from utils.s3Utils.uploadUtils import uploadObjectS3
-from utils.s3Utils.findSubFolderCount import findSubFolderCount
+from utils.s3Utils.uploadUtils import upload_object_s3
+from utils.s3Utils.findSubFolderCount import find_sub_folder_count
+from utils.s3Utils.client import awsClient
 
 import logging
 import argparse
 
 logging.getLogger().setLevel("INFO")
 
-def handleArguments() -> Tuple:
-    argumentParser = argparse.ArgumentParser()
-    argumentParser.add_argument(
+def handle_arguments() -> Tuple:
+    argument_parser = argparse.ArgumentParser()
+    argument_parser.add_argument(
         '--type',
         type=str,
         required=True,
@@ -22,39 +22,39 @@ def handleArguments() -> Tuple:
         help="Select to crawl all or test and define custom start and end id"
         )
 
-    argumentParser.add_argument(
-        '--startId',
+    argument_parser.add_argument(
+        '--start_id',
         type=int,
         help="Start ID if test crawl"
         )
 
-    argumentParser.add_argument(
-        '--endId',
+    argument_parser.add_argument(
+        '--end_id',
         type=int,
         help="End ID if test crawl"
         )
 
-    type: str = argumentParser.parse_args().type
-    startId: int = argumentParser.parse_args().startId
-    endId: int = argumentParser.parse_args().endId
+    type: str = argument_parser.parse_args().type
+    start_id: int = argument_parser.parse_args().start_id
+    end_id: int = argument_parser.parse_args().end_id
 
-    return type, startId, endId
+    return type, start_id, end_id
 
 
-def runPlayerRawData(type: str, startId: int, endId: int) -> None:
+def run_player_raw_data(type: str, start_id: int, end_id: int, aws_client: any) -> None:
     if (type == "all"):
-        startId = 1
-        endId = playerLatestIdCrawler()
-        crawlCount = findSubFolderCount("playerRawData")
+        start_id = 1
+        end_id = player_latest_id_crawler()
+        crawl_count = find_sub_folder_count("player_raw_data", aws_client)
     else:
-        crawlCount = "test"
+        crawl_count = "test"
 
-    for i in range(startId, endId + 1):
-        playerRawData = playerRawDataCrawler(i)
-        playerRawData.createJson()
-        uploadObjectS3("PlayerRawData", crawlCount, str(playerRawData.pdgaNumber), '', playerRawData.jsonData)
+    for i in range(start_id, end_id + 1):
+        player_raw_data = player_raw_data_crawler(i)
+        player_raw_data.create_json()
+        upload_object_s3("PlayerRawData", crawl_count, str(player_raw_data.pdga_number), '', player_raw_data.json_data, aws_client)
     
 
 if __name__ == "__main__":
-    type, startId, endId = handleArguments()
-    runPlayerRawData(type, startId, endId)
+    type, start_id, end_id = handle_arguments()
+    run_player_raw_data(type, start_id, end_id, awsClient('s3'))

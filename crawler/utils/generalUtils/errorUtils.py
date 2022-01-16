@@ -1,6 +1,6 @@
-from mapping.errorMapping import errorMessages, errorMessagesType
+from mapping.errorMapping import error_messages, error_messages_type
 
-def raiseError(message: errorMessagesType) -> Exception:
-    errorMessage = errorMessages.get(message)
+def raise_error(message: error_messages_type) -> Exception:
+    error_message = error_messages.get(message)
 
-    raise Exception(errorMessage)
+    raise Exception(error_message)

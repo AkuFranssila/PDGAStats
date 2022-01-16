@@ -1,4 +1,4 @@
-monthNumberToMonthFull = {
+MONTH_NUMBER_TO_FULL_NAME = {
     '01':'January',
     '02':'February',
     '03':'March',
@@ -13,7 +13,7 @@ monthNumberToMonthFull = {
     '12':'December'
 }
 
-monthShortToMonthNumber = {
+MONTH_SHORT_NAME_TO_NUMBER = {
     'Jan': '01',
     'Feb': '02',
     'Mar': '03',
@@ -28,7 +28,7 @@ monthShortToMonthNumber = {
     'Dec': '12',
 }
 
-monthShortToMonthFull = {
+MONTH_SHORT_NAME_TO_FULL_NAME = {
     'Jan': 'January',
     'Feb': 'February',
     'Mar': 'March',
@@ -43,4 +43,4 @@ monthShortToMonthFull = {
     'Dec': 'December'
 }
 
-monthFullToMonthShort = dict(map(reversed, monthShortToMonthFull.items()))
+MONTH_FULL_NAME_TO_SHORT_NAME = dict(map(reversed, MONTH_SHORT_NAME_TO_FULL_NAME.items()))

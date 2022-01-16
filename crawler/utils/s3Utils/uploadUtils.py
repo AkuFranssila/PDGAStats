@@ -1,18 +1,19 @@
 import logging
 import json
+from utils.generalUtils.errorUtils import raise_error
 
-from utils.s3Utils.client import awsClient
-
+from mapping.s3_folder_mapping import S3_FOLDER_MAPPING
 
 logging.getLogger().setLevel("INFO")
 
-client = awsClient("s3")
-
-def uploadObjectS3(folderName: str, subFolderName: str, filePrefix: str, fileSuffix: str, data: any, bucket: str ="pdga-project-data") -> None:
+def upload_object_s3(folder_name: str, sub_folder_name: str, file_prefix: str, file_suffix: str, data: any, aws_client: any, bucket: str ="pdga-project-data") -> None:
     """
     Upload single object to S3
     """
-
-    s3Key = f'{folderName}/{subFolderName}/{filePrefix}{fileSuffix}.json'
     
-    client.put_object(Body=json.dumps(data, indent=4), Bucket=bucket, Key=s3Key)
+    if folder_name not in S3_FOLDER_MAPPING:
+        raise_error('INCORRECT_S3_FOLDER_NAME')
+
+    s3_key = f'{folder_name}/{sub_folder_name}/{file_prefix}{file_suffix}.json'
+    
+    aws_client.put_object(Body=json.dumps(data, indent=4), Bucket=bucket, Key=s3_key)

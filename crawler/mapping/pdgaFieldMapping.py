@@ -1,17 +1,17 @@
-pdgaPlayerClassification = {
+PDGA_PLAYER_CLASSIFICATION = {
     "Professional": "PRO",
     "Amateur": "AM",
 }
 
-membershipStatusMappingActive = [
+MEMBERSHIP_STATUS_ACTIVE = [
     "Eagle Club", 
     "Birdie Club", 
     "Ace Club", 
     "Current", 
 ]
 
-membershipStatusMappingInactive = [
+MEMBERSHIP_STATUS_INACTIVE = [
     "Expired"
 ]
 
-membershipStatusMappingAll = membershipStatusMappingActive + membershipStatusMappingInactive
+MEMBERSHIP_STATUS_ALL = MEMBERSHIP_STATUS_ACTIVE + MEMBERSHIP_STATUS_INACTIVE

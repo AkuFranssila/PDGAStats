@@ -1,39 +1,39 @@
 import random
 import datetime
-from crawler.utils.generalUtils.defaultUtils import defaultTo
+from crawler.utils.generalUtils.defaultUtils import default_to
 
-from mapping.pdgaFieldMapping import pdgaPlayerClassification, membershipStatusMappingAll
-from mapping.dateTimeMapping import monthShortToMonthFull, monthShortToMonthNumber
-from mapping.stateMapping import statesFullUS
-from mapping.divisionMapping import divisionMappingAllOpenWomen
-from mapping.eventTierMapping import eventTierMapping
+from mapping.pdgaFieldMapping import PDGA_PLAYER_CLASSIFICATION, MEMBERSHIP_STATUS_ALL
+from mapping.dateTimeMapping import MONTH_SHORT_NAME_TO_FULL_NAME, MONTH_SHORT_NAME_TO_NUMBER
+from mapping.stateMapping import US_STATES_DICT
+from mapping.divisionMapping import DIVISION_ALL_OPEN_AND_WOMEN
+from mapping.eventTierMapping import EVENT_TIER_MAPPING
 
-from utils.testUtils.randomCityNames import randomCityNames
+from utils.testUtils.randomCityNames import RANDOM_CITY_NAMES
 
 randomYearsPlayedType = list[int]
 
-def generateNoneRandomly(input: any) -> any:
-    randInt = generateRandomNumberBetween(1, 20)
+def generate_none_randomly(input: any) -> any:
+    rand_int = generate_random_number_between(1, 20)
 
-    if randInt > 5:
+    if rand_int > 5:
         return input
     else:
         return None
 
-def generateRandomNumberBetween(start: int, end: int) -> int:
-    randInt = random.randint(start, end)
+def generate_random_number_between(start: int, end: int) -> int:
+    random_int = random.random_int(start, end)
 
-    return randInt
+    return random_int
 
 def generateRandomPdgaNumber() -> int:
-    randInt = random.randint(1, 999_999)
+    random_int = random.random_int(1, 999_999)
 
-    return randInt
+    return random_int
 
 def generateRandomTournamentId() -> int:
-    randInt = random.randint(1, 99_999)
+    random_int = random.random_int(1, 99_999)
 
-    return randInt
+    return random_int
 
 def generateRandomMoneyAmount() -> float:
     randFloat = round(random.uniform(0.00, 9_999_999.99), 2)
@@ -41,37 +41,37 @@ def generateRandomMoneyAmount() -> float:
     return randFloat
 
 def generateRandomMemberSince() -> int:
-    randInt = random.randint(1960, datetime.datetime.now().year)
+    random_int = random.random_int(1960, datetime.datetime.now().year)
 
-    return randInt
+    return random_int
 
 def generateRandomRating() -> int:
-    randInt = random.randint(1, 1150)
+    random_int = random.random_int(1, 1150)
 
-    return randInt
+    return random_int
 
 def generateRandomRatingChange() -> int:
-    randInt = random.randrange(-150, 150)
+    random_int = random.randrange(-150, 150)
 
-    return randInt
+    return random_int
 
 def generateRandomEventCount() -> int:
-    randInt = random.randint(0, 999)
+    random_int = random.random_int(0, 999)
 
-    return randInt
+    return random_int
 
 def generateRandomEventWins() -> int:
-    randInt = random.randint(0, 999)
+    random_int = random.random_int(0, 999)
 
-    return randInt
+    return random_int
 
 def generateRandomTournamentPosition() -> int:
     """
     Returns random position number between 1 to 999
     """
-    randInt = random.randint(1, 999)
+    random_int = random.random_int(1, 999)
 
-    return randInt
+    return random_int
 
 def generateRandomPoints() -> float:
     randFloat = round(random.uniform(0.00, 9_999.99), 2)
@@ -84,9 +84,9 @@ def generateRandomCoursePar(holes: int = 18) -> int:
 
     Minimum par is holes times 3 with random number of additional par up to number of holes.
     """
-    randInt = holes * 3 + random.randint(0, holes)
+    random_int = holes * 3 + random.random_int(0, holes)
 
-    return randInt
+    return random_int
 
 def generateRandomCourseResult(holes: int = 18, par: int = 54) -> int:
     """
@@ -106,15 +106,15 @@ def generateRandomYearsPlayed() -> randomYearsPlayedType:
 
     Returns list of years as int.
     """
-    randIntList = random.sample(range(1960, datetime.datetime.now().year), random.randint(0, 30))
+    random_intList = random.sample(range(1960, datetime.datetime.now().year), random.random_int(0, 30))
 
-    return randIntList
+    return random_intList
 
 def generateRandomDivision() -> str:
     """
     """
     randDiv = random.choice(
-        divisionMappingAllOpenWomen.keys()
+        DIVISION_ALL_OPEN_AND_WOMEN.keys()
         )
 
     return randDiv
@@ -131,11 +131,11 @@ def generateRandomOfficialStatus() -> bool:
     return randBool
 
 def generateRandomMembershipStatus() -> str:
-    randStatus = random.choice(membershipStatusMappingAll)
+    randStatus = random.choice(MEMBERSHIP_STATUS_ALL)
     
     return randStatus
 
-def generateRandomEventTier() -> str:
+def generate_random_event_tier() -> str:
     """
     Returns random event tier string
 
@@ -154,107 +154,107 @@ def generateRandomEventTier() -> str:
     A/B - Mix of A/B tier
     B/C - Mix of B/C tier
     """
-    randStatus = random.choice([
-        eventTierMapping.keys()
+    random_tier = random.choice([
+        EVENT_TIER_MAPPING.keys()
         ])
     
-    return randStatus
+    return random_tier
 
-def generateRandomClassification(shortType: bool = False) -> str:
+def generate_random_classification(short_type: bool = False) -> str:
     """
     Returns random PDGA Classification Amateur or Professional.
 
     Option to return the short version of status AM or PRO
     """
 
-    randInt = random.randint(0, 1)
-    if shortType:
-        randomClassification = pdgaPlayerClassification.values()[randInt]
+    random_int = random.random_int(0, 1)
+    if short_type:
+        random_classification = PDGA_PLAYER_CLASSIFICATION.values()[random_int]
     else:
-        randomClassification = pdgaPlayerClassification.keys()[randInt]
+        random_classification = PDGA_PLAYER_CLASSIFICATION.keys()[random_int]
 
-    return randomClassification
+    return random_classification
 
-def generateRandomYear() -> int:
+def generate_random_year() -> int:
     """
     Returns random year between 1960 to current year
     """
-    randYear = random.randint(1960, datetime.datetime.now().year)
+    random_year = random.random_int(1960, datetime.datetime.now().year)
 
-    return randYear
+    return random_year
 
-def generateRandomMonth() -> int:
+def generate_random_month() -> int:
     """
     Returns random month number 1, 2, 3, 4, 5, 6, 7
     """
-    randMonth = random.randint(1, 12)
+    random_month = random.random_int(1, 12)
 
-    return randMonth
+    return random_month
 
-def generateRandomMonthShortName() -> str:
+def generate_random_month_with_short_name() -> str:
     """
     Returns month in format Jan, Feb, Mar...
     """
-    randMonth = generateRandomNumberBetween(0, 11)
+    random_month = generate_random_number_between(0, 11)
 
-    randomMonthShortName = monthShortToMonthFull.keys()[randMonth]
+    random_month_short_name = MONTH_SHORT_NAME_TO_FULL_NAME.keys()[random_month]
 
-    return randomMonthShortName
+    return random_month_short_name
 
-def generateRandomMonthFullName() -> str:
+def generate_random_month_with_full_name() -> str:
     """
     Returns month in format January, February...
     """
-    randMonth = generateRandomNumberBetween(0, 11)
+    random_month = generate_random_number_between(0, 11)
 
-    randomMonthFullName = monthShortToMonthFull.values()[randMonth]
+    randomMonthFullName = MONTH_SHORT_NAME_TO_FULL_NAME.values()[random_month]
 
     return randomMonthFullName
 
-def generateRandomMonthNumberString() -> str:
+def generate_random_month_number_string() -> str:
     """
     Returns month in format 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12
     """
-    randMonth = generateRandomNumberBetween(0, 11)
+    random_month = generate_random_number_between(0, 11)
 
-    randomMonthNumberString = monthShortToMonthNumber.values()[randMonth]
+    random_month_number_string = MONTH_SHORT_NAME_TO_NUMBER.values()[random_month]
 
-    return randomMonthNumberString
+    return random_month_number_string
 
-def generateRandomDay() -> int:
-    randDay = generateRandomNumberBetween(1, 31)
+def generate_random_day() -> int:
+    random_day = generate_random_number_between(1, 31)
 
-    return randDay
+    return random_day
 
-def generateRandomCity() -> str:
-    randInt = random.randint(0, len(randomCityNames))
+def generate_random_city() -> str:
+    random_int = random.random_int(0, len(RANDOM_CITY_NAMES))
 
-    randomCity = randomCityNames[randInt]
+    random_city = RANDOM_CITY_NAMES[random_int]
 
-    return randomCity
+    return random_city
 
-def generateRandomUSStateFull() -> str:
-    usStates = statesFullUS.keys()
-    randInt = random.randint(0, len(usStates))
-    randomState = usStates[randInt]
+def generate_random_us_state_with_full_name() -> str:
+    us_states = US_STATES_DICT.keys()
+    random_int = random.random_int(0, len(us_states))
+    random_state = us_states[random_int]
 
-    return randomState
+    return random_state
 
-def generateRandomUSStateShort() -> str:
-    usStates = statesFullUS.values()
-    randInt = random.randint(0, len(usStates))
-    randomState = usStates[randInt]
+def generate_random_us_state_with_short_name() -> str:
+    us_states = US_STATES_DICT.values()
+    random_int = random.random_int(0, len(us_states))
+    random_state = us_states[random_int]
 
-    return randomState
+    return random_state
 
-def generateRandomUnitedStatesLocation() -> str:
-    city = generateNoneRandomly(generateRandomCity())
+def generate_random_united_states_location() -> str:
+    city = generate_none_randomly(generate_random_city())
     if city:
-        state = generateRandomUSStateFull()
+        state = generate_random_us_state_with_full_name()
     else:
-        state = generateNoneRandomly(generateRandomUSStateFull())
+        state = generate_none_randomly(generate_random_us_state_with_full_name())
     
-    location = f'{defaultTo(city, "")}, {defaultTo(state, "")}, United States'
+    location = f'{default_to(city, "")}, {default_to(state, "")}, United States'
     location = location.lstrip(",").strip()
 
     return location

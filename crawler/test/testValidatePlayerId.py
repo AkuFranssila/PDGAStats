@@ -1,45 +1,45 @@
 import unittest
 import logging
 
-from utils.crawlingUtils.validatePlayerId import validatePlayerId
+from utils.crawlingUtils.validatePlayerId import validate_player_id
 
 class TestValidatePlayerId(unittest.TestCase):
 
-    def testShouldValidateIdIfOver150k(self):
-        testId = "151000"
+    def test_should_succeed_if_id_over_150k(self):
+        test_id = "151000"
 
-        testId = validatePlayerId(testId)
-        self.assertEqual(testId, 151_000)
+        test_id = validate_player_id(test_id)
+        self.assertEqual(test_id, 151_000)
 
-    def testShouldRaiseErrorIfUnder150k(self):
+    def test_should_raise_error_if_id_under_150k(self):
         with self.assertRaises(Exception):
-            testId = "44000"
-            testId = validatePlayerId(testId)
+            test_id = "44000"
+            test_id = validate_player_id(test_id)
 
-    def testShouldConvertStringToInt(self):
-        testId = "151000"
+    def test_should_convert_string_to_int(self):
+        test_id = "151000"
 
-        testId = validatePlayerId(testId)
-        self.assertTrue(isinstance(testId, int))
+        test_id = validate_player_id(test_id)
+        self.assertTrue(isinstance(test_id, int))
 
-    def testShouldFailIfNotConvertableToInt(self):
+    def test_should_fail_if_cant_be_converted_to_int(self):
         with self.assertRaises(Exception):
-            testId = "TEST"
-            testId = validatePlayerId(testId)
+            test_id = "TEST"
+            test_id = validate_player_id(test_id)
 
-    def testShouldHaveCorrectErrorMessageForNotInt(self):
-        with self.assertRaises(Exception) as errorMsg:
-            testId = "TEST"
-            testId = validatePlayerId(testId)
-            logging.debug(errorMsg.exception)
-            self.assertTrue("Player ID can not be converted to INT. Check crawler for problems." in errorMsg.exception)
+    def test_should_have_correct_error_message_for_not_int(self):
+        with self.assertRaises(Exception) as error_message:
+            test_id = "TEST"
+            test_id = validate_player_id(test_id)
+            logging.debug(error_message.exception)
+            self.assertTrue("Player ID can not be converted to INT. Check crawler for problems." in error_message.exception)
 
-    def testShouldHaveCorrectErrorMessageForTooLowId(self):
-        with self.assertRaises(Exception) as errorMsg:
-            testId = "44000"
-            testId = validatePlayerId(testId)
-            logging.debug(errorMsg.exception)
-            self.assertTrue("Player ID is too low to be valid. Check crawler for problems." in errorMsg.exception)
+    def test_should_have_correct_error_message_for_too_low_id(self):
+        with self.assertRaises(Exception) as error_message:
+            test_id = "44000"
+            test_id = validate_player_id(test_id)
+            logging.debug(error_message.exception)
+            self.assertTrue("Player ID is too low to be valid. Check crawler for problems." in error_message.exception)
 
 
 if __name__ == '__main__':

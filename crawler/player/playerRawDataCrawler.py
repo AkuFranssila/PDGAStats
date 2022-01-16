@@ -1,49 +1,49 @@
 from typing import Tuple
 from player.playerRawData import PlayerRawData
-from utils.s3Utils.uploadUtils import uploadObjectS3
+from utils.s3Utils.uploadUtils import upload_object_s3
 import logging
 import requests
 import argparse
 
 logging.getLogger().setLevel("INFO")
 
-def handleArguments() -> Tuple:
+def handle_arguments() -> Tuple:
     argumentParser = argparse.ArgumentParser()
     argumentParser.add_argument(
-        '--pdgaNumber',
+        '--pdga_number',
         type=int,
         required=True,
         help="PDGA Number that needs to be crawled."
         )
 
     argumentParser.add_argument(
-        '--crawlCount',
+        '--crawl_count',
         type=str,
         default="test",
-        help="Sub folder where the data should be uploaded. crawlCount is a unique folder name used to specify which crawl count is going on. Use test if unknown"
+        help="Sub folder where the data should be uploaded. crawl_count is a unique folder name used to specify which crawl count is going on. Use test if unknown"
         )
 
-    pdgaNumber: int = argumentParser.parse_args().pdgaNumber
-    crawlCount: str =  argumentParser.parse_args().crawlCount
+    pdga_number: int = argumentParser.parse_args().pdga_number
+    crawl_count: str =  argumentParser.parse_args().crawl_count
 
-    return pdgaNumber, crawlCount
+    return pdga_number, crawl_count
 
 
-def playerRawDataCrawler(pdgaNumber: int) -> PlayerRawData:
-    url = f"https://www.pdga.com/player/{str(pdgaNumber)}"
+def player_raw_data_crawler(pdga_number: int) -> PlayerRawData:
+    url = f"https://www.pdga.com/player/{str(pdga_number)}"
     response = requests.get(url)
     data = response.text
-    statusCode = response.status_code
+    status_code = response.status_code
 
-    playerRawData = PlayerRawData(pdgaNumber, data, statusCode)
-    playerRawData.createJson()
+    player_raw_data = PlayerRawData(pdga_number, data, status_code)
+    player_raw_data.create_json()
 
-    return playerRawData
+    return player_raw_data
     
 
 if __name__ == "__main__":
-    pdgaNumber, crawlCount = handleArguments()
-    playerRawData = playerRawDataCrawler(pdgaNumber)
-    playerRawData.createJson()
-    uploadObjectS3("PlayerRawData", crawlCount, str(playerRawData.pdgaNumber), '', playerRawData.jsonData)
-    playerRawData.printJson()
+    pdga_number, crawl_count = handle_arguments()
+    player_raw_data = player_raw_data_crawler(pdga_number)
+    player_raw_data.create_json()
+    upload_object_s3("player_raw_data", crawl_count, str(player_raw_data.pdga_number), '', player_raw_data.json_data)
+    player_raw_data.printJson()
