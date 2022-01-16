@@ -44,8 +44,9 @@ def handle_arguments() -> Tuple:
 
 def run_player_raw_data(type: str, start_id: int, end_id: int, aws_client: any) -> None:
     if (type == "all"):
-        start_id = 1
         end_id = player_latest_id_crawler()
+        crawl_count = find_sub_folder_count("player_raw_data", aws_client)
+    elif (type == 'custom'):
         crawl_count = find_sub_folder_count("player_raw_data", aws_client)
     else:
         crawl_count = "test"
@@ -53,8 +54,14 @@ def run_player_raw_data(type: str, start_id: int, end_id: int, aws_client: any) 
     for i in range(start_id, end_id + 1):
         player_raw_data = player_raw_data_crawler(i)
         player_raw_data.create_json()
-        upload_object_s3("PlayerRawData", crawl_count, str(
-            player_raw_data.pdga_number), '', player_raw_data.json_data, aws_client)
+        upload_object_s3(
+            "player_raw_data",
+            crawl_count,
+            str(player_raw_data.pdga_number),
+            '',
+            player_raw_data.json_data,
+            aws_client
+        )
 
 
 if __name__ == "__main__":

@@ -17,5 +17,11 @@ def upload_object_s3(folder_name: str, sub_folder_name: str, file_prefix: str, f
 
     s3_key = f'{folder_name}/{sub_folder_name}/{file_prefix}{file_suffix}.json'
 
-    aws_client.put_object(Body=json.dumps(
-        data, indent=4), Bucket=bucket, Key=s3_key)
+    resp = aws_client.put_object(
+        Body=json.dumps(
+            data,
+            indent=4
+        ),
+        Bucket=bucket,
+        Key=s3_key
+    )
