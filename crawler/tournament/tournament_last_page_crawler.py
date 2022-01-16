@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def tournamentLastPage(link):
+def tournament_last_page_crawler(link):
     response = requests.get(link)
     soup = BeautifulSoup(response.content, "html.parser")
     last_page = soup.find(

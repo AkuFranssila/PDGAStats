@@ -3,3 +3,4 @@ boto3
 bs4
 python-dotenv
 requests-mock
+time-machine

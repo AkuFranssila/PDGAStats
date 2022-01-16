@@ -7,7 +7,7 @@ from runners.runPlayerRawData import run_player_raw_data, handle_arguments
 from utils.s3Utils.client import awsClient
 from utils.testUtils.requestsTestUtils import mock_requests_get
 from utils.testUtils.aws_test_utils import S3_LIST_OBJECTS_RESPONSE_WITHOUT_CONTENTS, S3_PUT_OBJECT_RESPONSE, S3_LIST_OBJECTS_RESPONSE_WITH_CONTENTS
-from test.data.test_data_pdga_44708 import test_data_pdga_44708
+from test.data.test_data_pdga_44708 import TEST_DATA_PDGA_44708
 from test.data.test_data_latest_id_202725 import TEST_DATA_LATEST_ID_202725
 
 
@@ -19,7 +19,7 @@ class TestPlayerRawDataRunner(unittest.TestCase):
 
     @requests_mock.Mocker()
     def test_should_run_correctly_on_test(self, m):
-        test_data = test_data_pdga_44708
+        test_data = TEST_DATA_PDGA_44708
         player_id_url = "https://www.pdga.com/player/1"
         mock_requests_get(player_id_url, test_data, m)
 
@@ -52,7 +52,7 @@ class TestPlayerRawDataRunner(unittest.TestCase):
         test_json = TEST_DATA_LATEST_ID_202725
         mock_requests_get(test_url, test_json, m)
 
-        test_data = test_data_pdga_44708
+        test_data = TEST_DATA_PDGA_44708
         player_id_url = "https://www.pdga.com/player/202724"
         mock_requests_get(player_id_url, test_data, m)
 
@@ -91,7 +91,7 @@ class TestPlayerRawDataRunner(unittest.TestCase):
         test_json = TEST_DATA_LATEST_ID_160_000
         mock_requests_get(test_url, test_json, m)
 
-        test_data = test_data_pdga_44708
+        test_data = TEST_DATA_PDGA_44708
 
         aws_client = awsClient('s3')
         stubber = Stubber(aws_client)

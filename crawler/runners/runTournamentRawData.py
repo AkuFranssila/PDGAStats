@@ -44,9 +44,10 @@ def handle_arguments() -> Tuple:
 
 def run_player_raw_data(type: str, start_id: int, end_id: int) -> None:
     if (type == "all"):
-        start_id = 1
-        end_id = player_latest_id_crawler()
-        crawl_count = find_sub_folder_count()
+        end_id = tournament_latest_id_crawler()
+        crawl_count = find_sub_folder_count("tournament_raw_data", aws_client)
+    elif (type == 'custom'):
+        crawl_count = find_sub_folder_count("tournament_raw_data", aws_client)
     else:
         crawl_count = "test"
 

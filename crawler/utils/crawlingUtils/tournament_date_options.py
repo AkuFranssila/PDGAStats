@@ -1,27 +1,28 @@
 import datetime
+from dateutil.relativedelta import relativedelta
 from typing import Literal
 from utils.generalUtils.errorUtils import raise_error
 
 crawlOptionTypes: str = Literal['all', 'latest', 'test']
 
 
-def tournament_date(date_option: str) -> str:
-    tournament_crawL_dates = {
+def tournament_date_options(date_option: str) -> str:
+    tournament_crawl_dates = {
         "all": {
             "startDate": "1979-01-01",
-            "endDate": str(datetime.datetime.today().year) + '-12-31'
+            "endDate": datetime.datetime(datetime.datetime.today().year, 12, 31).strftime("%Y-%m-%d")
         },
         "latest": {
-            "startDate": str(datetime.date.today().year) + '-' + str(datetime.date.today().month - 2 if datetime.date.today().month > 1 else 12) + '-' + str(datetime.date.today().day),
-            "endDate": str(datetime.datetime.today().year) + '-12-31'
+            "startDate": (datetime.date.today() - relativedelta(months=+2)).strftime("%Y-%m-%d"),
+            "endDate": datetime.datetime(datetime.datetime.today().year, 12, 31).strftime("%Y-%m-%d")
         },
         "test": {
-            "startDate": "2019-11-01",
-            "endDate": "2019-11-05"
+            "startDate": "2021-11-01",
+            "endDate": "2021-11-05"
         }
     }
 
-    date_options = tournament_crawL_dates.get(date_option)
+    date_options = tournament_crawl_dates.get(date_option)
 
     if date_options:
         start_date = date_options.get("startDate")

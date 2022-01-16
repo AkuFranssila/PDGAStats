@@ -1,14 +1,14 @@
 import unittest
 import logging
+from test.data.test_data_pdga_44708 import TEST_DATA_PDGA_44708
 
 from player.playerRawData import PlayerRawData
-from utils.generalUtils.fileUtils import open_json_file
 
 
 class TestPlayerRawData(unittest.TestCase):
 
     def test_should_init_with_correct_pdga_number(self):
-        data = open_json_file("test/data/testPlayerRawData44708.json")
+        data = TEST_DATA_PDGA_44708
 
         player_raw_data = PlayerRawData(
             44708,
@@ -19,7 +19,7 @@ class TestPlayerRawData(unittest.TestCase):
         self.assertEqual(player_raw_data.pdga_number, 44708)
 
     def test_should_init_with_correct_status_code(self):
-        data = open_json_file("test/data/testPlayerRawData44708.json")
+        data = TEST_DATA_PDGA_44708
         player_raw_data = PlayerRawData(
             44708,
             data.get("data", ""),
@@ -29,7 +29,7 @@ class TestPlayerRawData(unittest.TestCase):
         self.assertEqual(player_raw_data.status_code, 200)
 
     def test_should_init_with_correct_raw_data(self):
-        data = open_json_file("test/data/testPlayerRawData44708.json")
+        data = TEST_DATA_PDGA_44708
         player_raw_data = PlayerRawData(
             44708,
             data.get("data", ""),

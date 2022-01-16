@@ -6,7 +6,7 @@ from utils.testUtils.requestsTestUtils import mock_requests_get
 from test.data.test_data_latest_id_202725 import TEST_DATA_LATEST_ID_202725
 
 
-class TestPlayerLatestId(unittest.TestCase):
+class TestTournamentLastPageCrawler(unittest.TestCase):
     @requests_mock.Mocker()
     def test_should_get_latest_id_correctly(self, m):
         test_url = "https://www.pdga.com/players?FirstName=&LastName=&PDGANum=&Status=All&Class=All&MemberType=All&City=&StateProv=All&Country=All&Country_1=All&UpdateDate=&order=PDGANum&sort=desc"
