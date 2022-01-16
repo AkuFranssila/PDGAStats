@@ -1,6 +1,6 @@
 import json
 import logging
- 
+
 
 def open_json_file(file_path: str) -> json:
     """
@@ -9,7 +9,7 @@ def open_json_file(file_path: str) -> json:
     f = open(file_path)
     data = json.load(f)
     f.close()
-    
+
     if data:
         return data
     else:

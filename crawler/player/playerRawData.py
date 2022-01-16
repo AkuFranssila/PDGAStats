@@ -1,12 +1,14 @@
 import datetime
 import json
 
+
 class PlayerRawData:
     """
     Creates an object that stores raw data of the crawled player. 
 
     This data can be saved to S3 or locally.
     """
+
     def __init__(self, pdga_number: int, raw_data: str, status_code: int) -> None:
         self.pdga_number = pdga_number
         self.crawl_datetime = datetime.datetime.now()

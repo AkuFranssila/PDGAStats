@@ -4,10 +4,10 @@ PDGA_PLAYER_CLASSIFICATION = {
 }
 
 MEMBERSHIP_STATUS_ACTIVE = [
-    "Eagle Club", 
-    "Birdie Club", 
-    "Ace Club", 
-    "Current", 
+    "Eagle Club",
+    "Birdie Club",
+    "Ace Club",
+    "Current",
 ]
 
 MEMBERSHIP_STATUS_INACTIVE = [

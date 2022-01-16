@@ -36,7 +36,7 @@ US_STATES_DICT = {
     'New York': 'NY',
     'North Carolina': 'NC',
     'North Dakota': 'ND',
-    'Northern Mariana Islands':'MP',
+    'Northern Mariana Islands': 'MP',
     'Ohio': 'OH',
     'Oklahoma': 'OK',
     'Oregon': 'OR',

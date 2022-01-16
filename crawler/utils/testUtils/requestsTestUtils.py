@@ -1,4 +1,5 @@
-import json 
+import json
+
 
 def mock_requests_get(url: str, data: json, mock_request: any):
     """
@@ -8,4 +9,3 @@ def mock_requests_get(url: str, data: json, mock_request: any):
     if not text_content:
         text_content = data.get('data')
     mock_request.get(url, text=text_content)
-    

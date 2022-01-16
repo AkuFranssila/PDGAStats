@@ -16,7 +16,7 @@ class TestTournamentRawData(unittest.TestCase):
             200
         )
 
-        self.assertEqual(tournament_raw_data.tournamentId, 49356)
+        self.assertEqual(tournament_raw_data.tournament_id, 49356)
 
     def test_should_init_with_correct_status_code(self):
         data = test_data_tournament_49356
@@ -26,7 +26,7 @@ class TestTournamentRawData(unittest.TestCase):
             200
         )
 
-        self.assertEqual(tournamentRawData.tournamentId, 49356)
+        self.assertEqual(tournamentRawData.tournament_id, 49356)
 
 
 if __name__ == '__main__':

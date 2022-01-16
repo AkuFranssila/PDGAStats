@@ -2,6 +2,7 @@ import requests
 import argparse
 import json
 
+
 def handle_arguments() -> str:
     argument_parser = argparse.ArgumentParser()
     argument_parser.add_argument(
@@ -9,10 +10,11 @@ def handle_arguments() -> str:
         type=str,
         required=True,
         help="Random page that needs to be crawled. Returns raw content"
-        )
-    url: str =  argument_parser.parse_args().url
+    )
+    url: str = argument_parser.parse_args().url
 
     return url
+
 
 def crawl_random_page(url: str):
     response = requests.get(url)
@@ -21,6 +23,7 @@ def crawl_random_page(url: str):
     }
 
     print(json.dumps(data))
+
 
 if __name__ == "__main__":
     url = handle_arguments()

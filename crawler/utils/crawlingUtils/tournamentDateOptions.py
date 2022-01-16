@@ -4,6 +4,7 @@ from utils.generalUtils.errorUtils import raise_error
 
 crawlOptionTypes: str = Literal['all', 'latest', 'test']
 
+
 def tournament_date(date_option: str) -> str:
     tournament_crawL_dates = {
         "all": {

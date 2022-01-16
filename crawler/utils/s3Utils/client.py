@@ -10,6 +10,7 @@ SECRET_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 
 awsServiceType: str = Literal['s3']
 
+
 def awsClient(awsService: awsServiceType, debug: bool = False) -> any:
     if debug:
         boto3.set_stream_logger('')
@@ -21,4 +22,3 @@ def awsClient(awsService: awsServiceType, debug: bool = False) -> any:
     )
 
     return client
-    

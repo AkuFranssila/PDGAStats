@@ -3,6 +3,7 @@ import logging
 
 from utils.crawlingUtils.validatePlayerId import validate_player_id
 
+
 class TestValidatePlayerId(unittest.TestCase):
 
     def test_should_succeed_if_id_over_150k(self):
@@ -32,14 +33,16 @@ class TestValidatePlayerId(unittest.TestCase):
             test_id = "TEST"
             test_id = validate_player_id(test_id)
             logging.debug(error_message.exception)
-            self.assertTrue("Player ID can not be converted to INT. Check crawler for problems." in error_message.exception)
+            self.assertTrue(
+                "Player ID can not be converted to INT. Check crawler for problems." in error_message.exception)
 
     def test_should_have_correct_error_message_for_too_low_id(self):
         with self.assertRaises(Exception) as error_message:
             test_id = "44000"
             test_id = validate_player_id(test_id)
             logging.debug(error_message.exception)
-            self.assertTrue("Player ID is too low to be valid. Check crawler for problems." in error_message.exception)
+            self.assertTrue(
+                "Player ID is too low to be valid. Check crawler for problems." in error_message.exception)
 
 
 if __name__ == '__main__':

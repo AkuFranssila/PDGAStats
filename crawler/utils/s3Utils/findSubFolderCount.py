@@ -5,6 +5,7 @@ from utils.s3Utils.client import awsClient
 
 logging.getLogger().setLevel("INFO")
 
+
 def find_sub_folder_count(folder_name: str, aws_client: any) -> str:
     """
     Get the next subfolder count from S3 bucket for selected folder. 
@@ -30,5 +31,3 @@ def find_sub_folder_count(folder_name: str, aws_client: any) -> str:
         highest_folder_count = "0"
 
     return highest_folder_count
-
-

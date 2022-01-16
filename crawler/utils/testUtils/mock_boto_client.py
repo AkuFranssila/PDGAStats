@@ -5,5 +5,3 @@ from botocore.stub import Stubber
 def mock_aws_client():
     stubber = Stubber(awsClient)
     stubber.activate()
-
-
