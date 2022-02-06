@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from utils.generalUtils.errorUtils import raise_error
 
 
-def tournament_last_page_crawler(link):
+def tournament_last_page_crawler(link: str) -> int:
     response = requests.get(link)
     soup = BeautifulSoup(response.content, "html.parser")
 
@@ -18,7 +18,7 @@ def tournament_last_page_crawler(link):
         last_page = soup.find(
             class_="view-footer").find("p").text.split(' of ')[-1]
         if (last_page.isdigit()):
-            return 2
+            return 1
         else:
             raise_error("TOURNAMENT_LAST_PAGE_FAILED_TO_PARSE")
     else:

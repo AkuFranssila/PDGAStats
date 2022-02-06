@@ -37,6 +37,7 @@ def tournament_raw_data_crawler(tournament_id: int) -> TournamentRawData:
     status_code = response.status_code
 
     tournament_raw_data = TournamentRawData(tournament_id, data, status_code)
+    tournament_raw_data.create_json()
 
     return tournament_raw_data
 

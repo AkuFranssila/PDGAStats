@@ -5,7 +5,9 @@ error_messages = {
     "PLAYER_ID_NOT_INT": "Player ID can not be converted to INT. Check crawler for problems.",
     "INCORRECT_TOURNAMENT_DATE": "Incorrect Tournament Crawl Options. Select all, test or latest.",
     "INCORRECT_S3_FOLDER_NAME": "Incorrect S3 Folder selected. Check mapping for correct naming.",
-    "TOURNAMENT_LAST_PAGE_FAILED_TO_PARSE": "Failed to parse tournament last page correctly."
+    "TOURNAMENT_LAST_PAGE_FAILED_TO_PARSE": "Failed to parse tournament last page correctly.",
+    "INVALID_TOURNAMENT_URL": "Incorrect tournament URL. Tournament URL did not contain tour/event/.",
+    "TOURNAMENT_ID_NOT_INT": "Parsed tournament ID was not convertable to INT. Check tournament ID."
 }
 
 error_messages_type = Literal[tuple(error_messages.keys())]

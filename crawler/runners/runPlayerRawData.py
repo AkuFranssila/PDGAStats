@@ -7,6 +7,8 @@ from utils.s3Utils.uploadUtils import upload_object_s3
 from utils.s3Utils.findSubFolderCount import find_sub_folder_count
 from utils.s3Utils.client import awsClient
 
+from utils.generalUtils.notification_utils import print_process_notification
+
 import logging
 import argparse
 
@@ -52,6 +54,8 @@ def run_player_raw_data(type: str, start_id: int, end_id: int, aws_client: any) 
         crawl_count = "test"
 
     for i in range(start_id, end_id + 1):
+        print_process_notification(i, end_id - start_id)
+
         player_raw_data = player_raw_data_crawler(i)
         player_raw_data.create_json()
         upload_object_s3(

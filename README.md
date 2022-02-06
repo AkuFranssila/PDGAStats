@@ -1,8 +1,8 @@
-*** Frontend ***
+**_ Frontend _**
 
-*** Backend ***
+**_ Backend _**
 
-*** Crawler ***
+**_ Crawler _**
 
 Crawl single player stats
 
@@ -24,26 +24,31 @@ Run all unit tests
 
 `python3 -m unittest discover -v`
 
-*** TODO ***
+**_ DONE _**
 
 - Crawl tournaments
+  - Crawl tournament IDs by going through each page
 - Tests for crawling
 
-- Decide DB for project
+**_ TODO _**
 
+- Parse players
+- Tests for parsing players
+
+- Parse tournaments
+- Tests for parsing tournaments
+
+- Decide DB for project
 - Schema for DB
 - Upload utils to DB
 
-- Parse & upload players
-- Tests for parsing players
-
-- Parse & upload tournaments
-- Tests for parsing tournaments
+- Run & upload players
+- Run & upload tournaments
 
 - Mock data for frontend
 
-- Start Backend/API 
+- Start Backend/API
 - Python or JS
 
 - Start frontend for project
-- 
+-

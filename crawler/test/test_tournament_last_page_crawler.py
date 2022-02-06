@@ -28,7 +28,7 @@ class TestTournamentLastPageCrawler(unittest.TestCase):
     def test_should_get_correct_last_page_for_test_option(self, m):
         mock_requests_get(test_option_url, test_option_test_json, m)
         last_page_number = tournament_last_page_crawler(test_option_url)
-        self.assertEqual(last_page_number, 2)
+        self.assertEqual(last_page_number, 1)
 
     @requests_mock.Mocker()
     def test_should_get_correct_last_page_for_all_option(self, m):
@@ -37,10 +37,22 @@ class TestTournamentLastPageCrawler(unittest.TestCase):
         self.assertEqual(last_page_number, 2029)
 
     @requests_mock.Mocker()
+    def test_should_return_all_option_in_correct_range(self, m):
+        mock_requests_get(all_option_url, all_option_test_json, m)
+        last_page_number = tournament_last_page_crawler(all_option_url)
+        self.assertGreater(last_page_number, 1500)
+
+    @requests_mock.Mocker()
     def test_should_get_correct_last_page_for_latest_option(self, m):
         mock_requests_get(latest_option_url, latest_option_test_json, m)
         last_page_number = tournament_last_page_crawler(latest_option_url)
         self.assertEqual(last_page_number, 104)
+
+    @requests_mock.Mocker()
+    def test_should_return_latest_option_in_correct_range(self, m):
+        mock_requests_get(latest_option_url, latest_option_test_json, m)
+        last_page_number = tournament_last_page_crawler(latest_option_url)
+        self.assertGreater(last_page_number, 100)
 
 
 if __name__ == '__main__':
