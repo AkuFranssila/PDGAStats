@@ -21,7 +21,7 @@ jobs:
       with:
         python-version: "3.10"
     - name: Setup working directory
-    - run: |
+      run: |
         working-directory: ./crawler
     - name: Install dependencies
       run: |
